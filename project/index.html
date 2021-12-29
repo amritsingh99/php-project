@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function User(forename, username, password) {
+            this.forename = forename
+            this.username = username
+            this.password = password
+
+            this.showUser = function() {
+                document.write(forename + "<br>");
+                document.write(username + "<br>");
+                document.write(password + "<br>");
+            }
+        }
+        details = new User("Wolfgang", "w.a.mozart", "composer");
+        details.showUser();
+        name = details.forename
+        document.write(name)
+        balls = {"golf" : "6",
+                "tennis" : "3",
+                "soccer" : 1}
+        document.write("<br>")
+
+        for (ball in balls)
+            document.write(ball + " = " + balls[ball] + "<br>")
+
+        sports = ["Football", "Tennis", "Baseball", ,"Hockey"]
+        sports.sort()
+        document.write(sports + "<br>")
+    </script>
+</body>
+</html>
