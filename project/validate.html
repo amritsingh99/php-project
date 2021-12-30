@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,18 +8,19 @@
     <title>Document</title>
     <style>
         .signup {
-        border:1px solid #999999;
-        font: normal 14px helvetica;
-        color: #444444;
+            border: 1px solid #999999;
+            font: normal 14px helvetica;
+            color: #444444;
         }
-    </style>    
+    </style>
 </head>
+
 <body>
     <script src="validate_functions.js"></script>
     <pre>
     <table border="0" cellpadding="2" cellspacing="5" bgcolor="#eeeeee">
         <th colspan="2">SignUp Form</th>
-        <form action="" method="post" onsubmit="return validate(this)">
+        <form action="add_user.php" method="post" onsubmit="return validate(this)">
         <tr>
             <td>Forename</td>
             <td><input type="text" maxlength="32" name="forename"></td>
