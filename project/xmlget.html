@@ -22,8 +22,14 @@
         request.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
-                    if (this.responseTst)
-                }
+                    if (this.responseText != null) {
+                        titles = this.responseXML.getElementsByTagName('title')
+                        for (j = 0; j < titles.length; ++j) {
+                            out += titles[j].childNodes[0].nodeValue + '<br>'
+                        }
+                        document.getElementById(ínfo).innerHTML = out
+                    } else alert("Ajax error: No data received")
+                } else alert("Ajax error: " + this.statusText)
             }
         }
 
@@ -43,6 +49,8 @@
             }
             return request
         }
+
+        request.send(null)
     </script>
 </body>
 
