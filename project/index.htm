@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="John Dean">
+    <title>March Madness</title>
+    <style>
+        html {
+            display: flex;
+            justify-content: center;
+        }
+        
+        body {
+            display: table;
+        }
+        /* table {
+            empty-cells: show;
+        } */
+        
+        .row {
+            display: table-row;
+        }
+        
+        .cell {
+            display: table-cell;
+            border: thin solid;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .end {
+            width: 200px;
+            padding: 10px;
+        }
+        
+        th {
+            width: 40px;
+        }
+        
+        td {
+            text-align: center;
+        }
+        /* tr:nth-of-type(5) td:nth-of-type(5),
+        tr:nth-of-type() {
+            background-color: gold;
+        } */
+        /* tr:nth-of-type(n + 5) {
+            background-color: gold;
+        }
+         */
+        
+        tr:nth-of-type(5) td:nth-of-type(n+3) {
+            background-color: gold;
+        }
+        
+        tr:nth-of-type(n+6) {
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="end cell">
+            <h1>MARCH MADNESS</h1>
+        </div>
+        <table class="cell">
+            <caption>
+                <h3>March</h3>
+            </caption>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+        </table>
+        <article class="end cell">
+            <h3>The Jayhawks</h3>
+            Hail to our alma mater, towering toward the blue. Lift the banner ever skyward. Hails to old KU.
+
+        </article>
+    </div>
+</body>
+
+</html>

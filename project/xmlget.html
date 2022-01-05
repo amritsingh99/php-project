@@ -13,7 +13,7 @@
     <div id="info">This sentence will be replaced</div>
     <script>
         nocache = "&nocache=" + Math.random() * 1000000
-        url = "rss.news.yahoo.com/rss/topstories"
+        url = "rss.news.yahoo.com"
         out = "";
 
         request = new ajaxRequest()
@@ -22,18 +22,18 @@
         request.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
-                    document.write(this.status + "<br>")
-                    document.write(this.readyState + "<br>")
-                    document.write(this.responseText + "<br>")
-                        // if (this.responseText != null) {
-                        //     titles = this.responseXML.getElementsByTagName('title')
-                        //     for (j = 0; j < titles.length; ++j) {
-                        //         out += titles[j].childNodes[0].nodeValue + '<br>'
-                        //     }
-                        //     document.getElementById('info').innerHTML = out
-                } else alert("Ajax error: No data received")
-            } else alert("Ajax error: " + this.statusText)
-        }
+                    if (this.status != null) {
+                        document.write("True")
+                    }
+                    if (this.responseText != null) {
+                        titles = this.responseXML.getElementsByTagName('title')
+                        for (let j = 0; j < titles.length; ++j) {
+                            out += titles[j].childNodes[0].nodeValue + '<br>'
+                        }
+                        document.getElementById('info').innerHTML = out
+                    } else alert("Ajax error: No data received")
+                } else alert("Ajax error: " + this.statusText)
+            }
         }
         request.send(null)
 
