@@ -1,39 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="html">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Adding Elements</title>
+    <script src='scripts/index.js'></script>
+    <script src='pkg_util.js'></script>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <script>
-        function User(forename, username, password) {
-            this.forename = forename
-            this.username = username
-            this.password = password
+    <div id="header">Solar Collector Perfomance</div>
+    <form class="input-box" id="bhenchod">
+        <div class="input-table">
+            <div class="input-row">
+                <div class="input-cell">
+                    Local Latitude (deg):
+                    <input type="text" id="latitude">
+                </div>
+                <div class="input-cell">
+                    Panel Slope (deg):
+                    <input type="text" id="panel">
+                </div>
+            </div>
+        </div>
+        <div class="rateinput">
+            Rated Watts per Square Meter:
+            <input type="text" id="rate">
+        </div>
+        <div class="table">
+            <div class="row">
+                <div class="cell">
+                    Month
+                    <select id="months" name="months" multiple>
+                            <option>Jan</option> <option>Feb</option> <option>Mar</option>
+                            <option>Apr</option> <option>May</option> <option>Jun</option>
+                            <option>Jul</option> <option>Aug</option> <option>Sep</option>
+                            <option>Oct</option> <option>Nov</option> <option>Dec</option>
+                    </select>
+                </div>
+                <div class="cell" id="cell">
+                    <input type="button" value="Calculate" name="bhenchod" id="click" onclick="doSomething(this.name)">
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="container">
+        <div id="table">
+            <div id="caption">
+                <h3>Calculation Results:</h3>
+            </div>
+            <div class="row" id="th">
+                <div class="cell">Latitude</div>
+                <div class="cell">Slope</div>
+                <div class="cell">Rated Watts</div>
+                <div class="cell">Month</div>
+                <div class="cell">Watts per Square Meter</div>
+            </div>
+            <div class="row">
+                <div class="cell">39</div>
+                <div class="cell">39</div>
+                <div class="cell">39</div>
+                <div class="cell">39</div>
+                <div class="cell">39</div>
+            </div>
+        </div>
+    </div>
+    <h3>Assumption and Instructions:</h3>
 
-            this.showUser = function() {
-                document.write(forename + "<br>");
-                document.write(username + "<br>");
-                document.write(password + "<br>");
-            }
-        }
-        details = new User("Wolfgang", "w.a.mozart", "composer");
-        details.showUser();
-        name = details.forename
-        document.write(name)
-        balls = {"golf" : "6",
-                "tennis" : "3",
-                "soccer" : 1}
-        document.write("<br>")
+    <article id="para1">
+        Horizontal panels have a panel slope equal to zero. Positive panel slope equal to zero. Positive panel slope tips panels up from horizontal toward South. For southern hemisphere, use negative latitude and negative panel slope. The calculated result is
+        at solar noon on the 21st day of the selected month, assuming no clouds and no shading.
+    </article>
 
-        for (ball in balls)
-            document.write(ball + " = " + balls[ball] + "<br>")
 
-        sports = ["Football", "Tennis", "Baseball", ,"Hockey"]
-        sports.sort()
-        document.write(sports + "<br>")
-    </script>
+    <article id="para2">
+        Inspect the volunteered values of Latitude, Slope, and Rated Watts. Enter different values to suit your situation. Select a month, then click the "Calculate" button to display the watts per square meter generated at noon for the seelcted conditions in
+        the selected month.
+    </article>
 </body>
+
 </html>
