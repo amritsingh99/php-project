@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Finder</title>
+    <script src="scripts/index.js"></script>
+    <script src="pkg_util.js"></script>
+
+</head>
+
+<body>
+    <h1>Quadratic Equation Roots Calculator</h1>
+    <!-- <form>
+        Local Altitude (deg):
+        <input type="text" id="latitude" size="5" value="39"> Panel Slope (deg):
+        <input type="text" id="panelSlope" size="5" value="20"><br>
+        <label for="ratedWatts">Rated Watts per Square Meter:</label>
+        <input type="text" id="ratedWatts" size="5" value="133"><br>
+        <label for="months">Month:</label>
+        <select name="months" id="months">
+            <option>Jan</option> <option>Feb</option> <option>Mar</option>
+            <option>Apr</option> <option>May</option> <option>Jun</option>
+            <option>Jul</option> <option>Aug</option> <option>Sep</option>
+            <option>Oct</option> <option>Nov</option> <option>Dec</option>
+        </select>
+    </form> -->
+
+    <p>This web page finds the roots of a polynomical function equation of the following form ax<sup>2</sup> + bx + c = 0
+    </p>
+    <p>
+        <em>a, b and c</em> must be b/w -99 to 99, and a != 0
+    </p>
+    <form id="myForm">
+        a:
+        <input type="number" id="a" max="99" min="-99"> b:
+        <input type="number" id="b" max="99" min="-99"> c:
+        <input type="number" id="c" max="99" min="-99">
+        <p>
+            <input type="button" value="Calculate" name="myForm" onclick="findRoots(this.name)">
+        </p>
+
+    </form>
+</body>
+
+</html>

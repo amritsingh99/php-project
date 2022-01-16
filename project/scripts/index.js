@@ -19,16 +19,16 @@ function doSomething(formData) {
     var valuesObj = {
         'latitude': latitude,
         'panel_slope': panel_slope,
-        'rate': rate,
+        'ratedWatts': rate,
         'month': month,
         'rate': filler
     }
 
-    // calculations = computeAngles(valuesObj)
-    // calculations.ratedWatts = rate
+    var calculations = computeAngles(valuesObj)
+    calculations.watts = findWatts(calculations)
+    values[values.length - 1] = calculations.watts
+    console.log(calculations);
 
-    valuesObj.rate = findWatts(computeAngles(valuesObj))
-    values[values.length - 1] = valuesObj.rate
     var table = O('table')
     var str = table.innerHTML
 
@@ -42,6 +42,7 @@ function doSomething(formData) {
 
 function computeAngles(arg) {
     var latitude = arg.latitude * Math.PI / 180
+
     var panelSlope = arg['panel_slope'] * Math.PI / 180
     var month = arg.month
     var solarDeclination = (-23.45 * Math.PI / 180) * Math.cos(month * Math.PI / 6)
@@ -50,13 +51,14 @@ function computeAngles(arg) {
         Math.sin(latitude) * Math.sin(solarDeclination)
 
     var altitude = Math.asin(sinAltitude)
-
+    var cosIncidenceAngle
     if (altitude > 0) {
         cosAzimuth =
             (Math.sin(solarDeclination) - sinAltitude * Math.sin(latitude)) / (Math.cos(altitude) * Math.cos(latitude))
 
         cosIncidenceAngle = sinAltitude * Math.cos(panelSlope) -
             cosAzimuth * Math.cos(altitude) * Math.sin(panelSlope)
+
 
         if (cosIncidenceAngle < 0) {
             cosIncidenceAngle = 0.0
@@ -67,7 +69,8 @@ function computeAngles(arg) {
         'cosAzimuth': cosAzimuth,
         'sinAltitude': sinAltitude,
         'altitude': altitude,
-        'cosIncidenceAngle': cosIncidenceAngle
+        'cosIncidenceAngle': cosIncidenceAngle,
+        'ratedWatts': arg.rate
     }
 }
 
@@ -76,13 +79,86 @@ function findWatts(calculations) {
     var watts = 0
 
     ratedWatts = calculations['ratedWatts']
-    var altitude = Math.asin(calculations.sinAltitude)
-
+    var altitude = calculations.altitude
     if (altitude > 0) {
         watts = ratedWatts *
             (0.86 * calculations['cosIncidenceAngle'] + 0.14 * Math.sin(calculations['altitude']))
+        console.log(watts);
     }
 
     return Math.round(watts)
 
 }
+
+function findRoots(formData) {
+    var obj = O(formData)
+    var a = Number.parseInt(obj.elements['a'].value)
+    var b = Number.parseInt(obj.elements['b'].value)
+    var c = Number.parseInt(obj.elements['c'].value)
+
+    if (Number.isNaN(a) || Number.isNaN(b) || Number.isNaN(c)) {
+        alert('Empty values not accepted')
+        return
+    }
+
+    var str = obj.innerHTML
+
+    var D = b * b - 4 * a * c
+    if (D < 0) {
+        str += "<p>Roots are imaginary</p>"
+    }
+    if (D == 0) {
+        str += "<p>Roots are equal</p>"
+        var root = -b / (2.0 * a)
+        str += "<p>Roots are " + root + ", " + root + " </p>"
+    }
+    if (D > 0) {
+        str += "<p>Roots are distinct</p>"
+        var root1 = (-b + D) / (2.0 * a)
+        var root2 = (-b - D) / (2.0 * a)
+        str += "<p> root1: " + root1 + " <br>root2: " + root2 + "</p>"
+    }
+    obj.innerHTML = str;
+    return
+}
+
+function generateTable(formData) {
+
+    var deposit = Number.parseFloat(formData.elements['deposit'].value)
+    var years = Number.parseFloat(formData.elements['years'].value)
+    var rate = Number.parseFloat(formData.elements['rate'].value)
+    var year = 1
+    var amount = deposit
+    var table =
+        `<table>
+    <tr>
+        <th>Year</th>
+        <th>Starting Value</th>
+        <th>Interest Earned</th>
+        <th>Ending Value</th>
+    </tr>`
+
+
+    while (year <= years) {
+        table += "<tr>";
+        table += "<td>" + year + "</td>";
+        table += "<td>$" + amount.toFixed(2) + "</td>";
+        interest = amount * rate / 100;
+        table += "<td>$" + interest.toFixed(2) + "</td>";
+        amount += interest;
+        table += "<td>$" + amount.toFixed(2) + "</td>";
+        table += "</tr>";
+        year++;
+    }
+    table += "</table>"
+    document.getElementById('result').innerHTML = table
+}
+
+function amrit() {
+    var x = (element) => {
+        console.log(element)
+    }
+    x("Amrit")
+}
+
+// amrit()

@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+    min-width: 500px;
+    /* prevents label wrapping */
+}
+
+form {
+    margin: 5px 20px;
+}
+
+input:last-of-type {
+    margin: 5px 20px;
+}
+
+
+/* position the table */
+
+.center {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}

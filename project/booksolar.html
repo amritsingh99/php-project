@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="booksolar.css">
+    <script src="scripts/booksolar.js"></script>
+    <script src="pkg_util.js"></script>
+    <script src="scripts/index.js"></script>
+</head>
+
+<body>
+    <h2>Solar Collector Performance</h2>
+    <form>
+        Local Altitude (deg):
+        <input type="text" id="latitude" size="5" value="39"> Panel Slope (deg):
+        <input type="text" id="panelSlope" size="5" value="20"><br>
+        <label for="ratedWatts">Rated Watts per Square Meter:</label>
+        <input type="text" id="ratedWatts" size="5" value="133"><br>
+        <label for="months">Month:</label>
+        <select name="months" id="months" multiple>
+                <option>Jan</option> <option>Feb</option> <option>Mar</option>
+                <option>Apr</option> <option>May</option> <option>Jun</option>
+                <option>Jul</option> <option>Aug</option> <option>Sep</option>
+                <option>Oct</option> <option>Nov</option> <option>Dec</option>
+        </select>
+        <input type="button" value="Calculate" onclick="calc(this.form)">
+    </form>
+    <h3>Calculation Results:</h3>
+    <div class="center">
+        <table id="performance">
+            <tr>
+                <th>Latitude &nbsp;</th>
+                <th>Slope &nbsp;</th>
+                <th>Rated Watts &nbsp;
+                </th>
+                <th>Month &nbsp;</th>
+                <th> Watts per Square Meter</th>
+            </tr>
+        </table>
+    </div>
+    <h3>Assumptions and Instructions:</h3>
+    <p>
+        Horizontal panels have a panel slope equal to zero. Positive panel slope tips panels up from horizontal toward South. For southern hemisphere, use negative latitude and negative panel slope. The calculated result is at solar noon on the 21st day of the
+        selected month, assuming no clouds and no shading.
+    </p>
+    <p>
+        Inspect the volunteered values of Latitude, Slope, and Rated Watts. Enter different values to suit your situation. Select a month. Then click the "Calculate" button to display the watts per square meter generated at noon for the selected conditions in
+        the selected month.
+    </p>
+
+</body>
+</body>
+
+</html>
