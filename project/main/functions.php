@@ -7,11 +7,8 @@
 
     $connection = new mysqli($hn, $un, $pw, $db, "3308");
     if ($connection->connect_error) {
-        echo "Error";
-    } else {
-        echo "Success!!!!";
+        die($connection->connect_error);
     }
-
     function queryMysql($query) {
         global $connection;
         $result = $connection->query($query);
