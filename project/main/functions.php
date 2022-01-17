@@ -1,6 +1,6 @@
 <?php
     $hn = 'localhost';
-    $db = 'publications';
+    $db = 'amritsnest';
     $un = 'root';
     $pw = '';
     $appname = "Amrit's Nest" ;
@@ -32,7 +32,7 @@
         global $connection;
         $var = strip_tags($var);
         $var = htmlentities($var);
-        $var = striplashes($var);
+        $var = stripslashes($var);
         return $connection->real_escape_string($var);
     }
 
