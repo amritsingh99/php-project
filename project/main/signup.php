@@ -70,13 +70,14 @@ _END;
             }
         }
     }
+    
     echo <<< _END
     <form action="signup.php" method="post">
     <span class="fieldname">Username</span>
     <input type="text" maxlength="16" name="user" onBlur="checkUser(this)">$error
     <span id="info"></span><br>
     <span class="fieldname">Password</span>
-    <input type="text" maxlength="16" name="pass">
+    <input type="password" maxlength="16" name="pass">
     
     _END;
 ?>
