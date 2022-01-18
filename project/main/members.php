@@ -12,7 +12,7 @@
         } else {
             $name = "$view's";
         }
-        echo "<h3>$name Profile";
+        echo "<h3>$name Profile</h3>";
         showProfile($view);
         echo "<a class='button' href='messages.php?view=$view''" .
         "View $name messages</a><br><br>";
