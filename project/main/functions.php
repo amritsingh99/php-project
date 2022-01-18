@@ -39,6 +39,7 @@
     function showProfile($user) {
         if (file_exists("$user.jpg"))
             echo "<img src='$user.jpg' style='float:left;'>";
+
         
         $result = queryMysql("select * from profiles where user = '$user'");
         
